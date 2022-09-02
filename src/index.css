@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Jost";
+    font-weight: 100;
+    src: url("assets/fonts/Jost-Thin.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 100;
+    font-style: italic;
+    src: url("assets/fonts/Jost-ThinItalic.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 200;
+    src: url("assets/fonts/Jost-ExtraLight.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 200;
+    font-style: italic;
+    src: url("assets/fonts/Jost-ExtraLightItalic.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 400;
+    src: url("assets/fonts/Jost-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 400;
+    font-style: italic;
+    src: url("assets/fonts/Jost-Italic.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 600;
+    src: url("assets/fonts/Jost-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 600;
+    font-style: italic;
+    src: url("assets/fonts/Jost-BoldItalic.ttf");
+  }
+}
+@layer components {
+  .category-container {
+    @apply flex flex-col justify-center items-center  h-32 md:h-80 
+    border-solid border-2 border-zinc-600 grayscale cursor-pointer overflow-hidden;
+  }
+  .category-image {
+    @apply object-fill scale-105 md:translate-y-0 translate-y-16  
+    transition ease-in-out  duration-500;
+  }
+  .category-description {
+    @apply sm:p-4 lg:p-6 p-2 text-center border-solid border-2 border-zinc-600 bg-slate-100 absolute
+    transition ease-in-out  duration-500;
+  }
+  .category-container:hover .category-image {
+    @apply duration-500  brightness-125 scale-110 translate-y-24 md:translate-y-12;
+  }
+  .category-container:hover .category-description {
+    @apply duration-500 bg-neutral-700 border-zinc-500 text-neutral-100;
+  }
+}
