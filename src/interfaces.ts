@@ -1,12 +1,15 @@
-interface CategoryData {
+type CategoryData = {
   id: number;
   title: string;
   imageURL: string;
-}
-interface CategoryUI {
+};
+type CategoryUI = {
   id: number;
   title: string;
   imageURL: string;
   style: string;
+};
+interface CategoryListProps {
+  categories: CategoryData[];
 }
-export type { CategoryData, CategoryUI };
+export type { CategoryData, CategoryUI, CategoryListProps };

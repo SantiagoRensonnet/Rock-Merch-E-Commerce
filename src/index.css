@@ -38,19 +38,44 @@
   }
   @font-face {
     font-family: "Jost";
+    font-weight: 500;
+    src: url("assets/fonts/Jost-Medium.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 500;
+    font-style: italic;
+    src: url("assets/fonts/Jost-MediumItalic.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
     font-weight: 600;
-    src: url("assets/fonts/Jost-Bold.ttf");
+    src: url("assets/fonts/Jost-SemiBold.ttf");
   }
   @font-face {
     font-family: "Jost";
     font-weight: 600;
     font-style: italic;
+    src: url("assets/fonts/Jost-Jost-SemiBoldItalic.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 700;
+    src: url("assets/fonts/Jost-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Jost";
+    font-weight: 700;
+    font-style: italic;
     src: url("assets/fonts/Jost-BoldItalic.ttf");
   }
 }
 @layer components {
+  .navigation {
+    @apply w-full h-20 flex justify-between items-center px-8 md:px-16 text-slate-100;
+  }
   .category-container {
-    @apply flex flex-col justify-center items-center  h-32 md:h-80 
+    @apply flex flex-col justify-center items-center  h-32 md:h-64 
     border-solid border-2 border-zinc-600 grayscale cursor-pointer overflow-hidden;
   }
   .category-image {

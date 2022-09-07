@@ -1,40 +1,21 @@
-import CategoryList from "./components/category-list.component";
+//Libraries
+import { Route, Routes } from "react-router-dom";
+//Routes
+import Navigation from "./routes/navigation.component";
+import Home from "./routes/home.component";
+import Login from "./routes/login.component";
+import Shop from "./routes/shop.component";
+
 const App = () => {
-  const categories = [
-    {
-      id: 1,
-      title: "HATS",
-      imageURL:
-        "https://images.unsplash.com/photo-1613160766294-cf9a6c0d2f6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-    {
-      id: 2,
-      title: "JACKETS",
-      imageURL:
-        "https://images.unsplash.com/photo-1619378448271-49616680044b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-    {
-      id: 3,
-      title: "SNICKERS",
-      imageURL:
-        "https://images.unsplash.com/photo-1619378881376-9776d23e28e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-    {
-      id: 4,
-      title: "WOMEN",
-      imageURL:
-        "https://images.unsplash.com/photo-1619065513120-ad804c3f5e22?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-    {
-      id: 5,
-      title: "MEN",
-      imageURL:
-        "https://images.unsplash.com/photo-1613160780608-9d5c8bfa239f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-  ];
   return (
-    <div className="flex flex-col  justify-center items-center bg-neutral-900 h-screen">
-      <CategoryList categories={categories} />
+    <div className="flex flex-col items-center font-jost bg-neutral-900 min-h-screen">
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+      </Routes>
     </div>
   );
 };

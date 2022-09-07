@@ -1,5 +1,5 @@
 //Interface
-import { CategoryData } from "../interfaces";
+import { CategoryListProps } from "../interfaces";
 //Components
 import CategoryItem from "./category-item.component";
 //Auxiliary functions
@@ -23,15 +23,11 @@ function getCategoryStyle(length: number, index: number) {
   return style;
 }
 
-//Types
-type Props = {
-  categories: CategoryData[];
-};
-const CategoryList = (props: Props) => {
+const CategoryList = ({ categories }: CategoryListProps) => {
   return (
-    <div className=" my-8 font-jost grid md:grid-cols-6 md:gap-4 gap-3 xl:w-8/12 md:w-10/12 sm:w-6/12 w-7/12 ">
-      {props.categories.map((category, index) => {
-        const categoryStyle = getCategoryStyle(props.categories.length, index);
+    <div className="my-auto grid md:grid-cols-6 md:gap-4 gap-3 xl:w-8/12 md:w-10/12 sm:w-6/12 w-7/12 ">
+      {categories.map((category, index) => {
+        const categoryStyle = getCategoryStyle(categories.length, index);
         return (
           <CategoryItem
             key={category.id}
