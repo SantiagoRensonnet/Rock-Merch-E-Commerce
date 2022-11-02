@@ -25,7 +25,7 @@ function getCategoryStyle(length: number, index: number) {
 
 const CategoryList = ({ categories }: CategoryListProps) => {
   return (
-    <div className="my-auto grid md:grid-cols-6 md:gap-4 gap-3 xl:w-8/12 md:w-10/12 sm:w-6/12 w-7/12 ">
+    <section className="my-auto w-full p-4  sm:p-0  sm:grid sm:gap-3 sm:w-6/12 md:grid-cols-6 md:gap-4 md:w-10/12  xl:w-8/12  ">
       {categories.map((category, index) => {
         const categoryStyle = getCategoryStyle(categories.length, index);
         return (
@@ -38,7 +38,7 @@ const CategoryList = ({ categories }: CategoryListProps) => {
           />
         );
       })}
-    </div>
+    </section>
   );
 };
 

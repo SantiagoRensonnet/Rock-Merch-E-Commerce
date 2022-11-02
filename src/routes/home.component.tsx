@@ -36,9 +36,9 @@ const Home = () => {
     },
   ];
   return (
-    <>
+    <main className="main-container">
       <CategoryList categories={categories} />
-    </>
+    </main>
   );
 };
 export default Home;

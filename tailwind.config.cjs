@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         jost: "'Jost',sans-serif",
+        openSans: "'Open Sans Condensed', sans-serif",
       },
     },
   },

@@ -69,17 +69,30 @@
     font-style: italic;
     src: url("assets/fonts/Jost-BoldItalic.ttf");
   }
+  @font-face {
+    font-family: "Open Sans Condensed";
+    font-weight: 400;
+    src: url("assets/fonts/OpenSans_Condensed-Light.ttf");
+  }
+  @font-face {
+    font-family: "Open Sans Condensed";
+    font-weight: 600;
+    src: url("assets/fonts/OpenSans_Condensed-Medium.ttf");
+  }
 }
 @layer components {
   .navigation {
-    @apply w-full h-20 flex justify-between items-center px-8 md:px-16 text-slate-100;
+    @apply sticky top-0 z-10 h-20 flex justify-between items-center px-8 md:px-16 bg-neutral-900 text-slate-100;
+  }
+  .main-container {
+    @apply min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center;
   }
   .category-container {
-    @apply flex flex-col justify-center items-center  h-32 md:h-64 
+    @apply flex flex-col justify-center items-center  h-[calc((100vh-5rem)/2-1.2rem)] mb-4 sm:mb-0 sm:h-[calc((100vh-5rem)/2-0.5rem)]  md:h-64 
     border-solid border-2 border-zinc-600 grayscale cursor-pointer overflow-hidden;
   }
   .category-image {
-    @apply object-fill scale-105 md:translate-y-0 translate-y-16  
+    @apply translate-y-16   scale-105  md:translate-y-0  
     transition ease-in-out  duration-500;
   }
   .category-description {
@@ -87,9 +100,34 @@
     transition ease-in-out  duration-500;
   }
   .category-container:hover .category-image {
-    @apply duration-500  brightness-125 scale-110 translate-y-24 md:translate-y-12;
+    @apply duration-500  brightness-125   scale-125 translate-y-28 md:scale-110 md:translate-y-8;
   }
   .category-container:hover .category-description {
     @apply duration-500 bg-neutral-700 border-zinc-500 text-neutral-100;
+  }
+  .sign-up-form {
+    @apply font-openSans;
+  }
+  .sign-up-form .input-group {
+    @apply flex flex-col relative z-0 mb-6;
+  }
+  .sign-up-form .input-group input {
+    @apply order-2;
+  }
+  .sign-up-form .input-group label {
+    @apply order-1;
+  }
+  .sign-up-form input {
+    @apply block py-2.5 px-0 w-64 text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none 
+    focus:outline-none focus:ring-0 focus:border-violet-600;
+  }
+  .sign-up-form label {
+    @apply absolute text-slate-200 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0];
+  }
+  .sign-up-form input:placeholder-shown + label {
+    @apply scale-100 translate-y-0;
+  }
+  .sign-up-form input:focus + label {
+    @apply left-0 text-violet-600 scale-75 top-3 origin-[0] -translate-y-6;
   }
 }

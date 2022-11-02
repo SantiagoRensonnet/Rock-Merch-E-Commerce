@@ -8,7 +8,7 @@ import Shop from "./routes/shop.component";
 
 const App = () => {
   return (
-    <div className="flex flex-col items-center font-jost bg-neutral-900 min-h-screen">
+    <div className="font-jost bg-neutral-900">
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
