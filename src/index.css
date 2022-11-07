@@ -105,29 +105,66 @@
   .category-container:hover .category-description {
     @apply duration-500 bg-neutral-700 border-zinc-500 text-neutral-100;
   }
-  .sign-up-form {
-    @apply font-openSans;
+
+  /* Forms */
+  /* common attributes */
+  .form-container {
+    @apply h-[calc((100vh-5rem))] md:h-auto 
+    flex flex-col justify-center md:justify-between items-center 
+    font-openSansCondensed text-slate-100;
   }
+  .sign-up-form,
+  .sign-in-form {
+    @apply w-full;
+  }
+  .form-input {
+    @apply py-2.5 px-0  tracking-widest   text-lg lg:text-xl   bg-transparent border-0 border-b-2 border-gray-300 appearance-none 
+    focus:outline-none focus:ring-0 focus:border-violet-600;
+  }
+
+  /* different attributes */
+  .sign-in-form .input-group {
+    @apply flex flex-col  mb-6;
+  }
+
   .sign-up-form .input-group {
     @apply flex flex-col relative z-0 mb-6;
   }
+
   .sign-up-form .input-group input {
     @apply order-2;
   }
   .sign-up-form .input-group label {
     @apply order-1;
   }
-  .sign-up-form input {
-    @apply block py-2.5 px-0 w-64 text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none 
-    focus:outline-none focus:ring-0 focus:border-violet-600;
-  }
+
   .sign-up-form label {
-    @apply absolute text-slate-200 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0];
+    @apply absolute text-slate-200 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] lg:text-lg;
   }
   .sign-up-form input:placeholder-shown + label {
     @apply scale-100 translate-y-0;
   }
   .sign-up-form input:focus + label {
     @apply left-0 text-violet-600 scale-75 top-3 origin-[0] -translate-y-6;
+  }
+
+  .sign-in-form label {
+    @apply lg:text-lg;
+  }
+  .sign-in-form .button-group {
+    @apply flex flex-col  mb-6 md:grid md:grid-cols-2 md:gap-4;
+  }
+  /* Buttons */
+  .btn {
+    @apply border border-transparent focus:ring-1  focus:ring-indigo-300
+  font-jost italic font-normal text-sm  text-center
+  mb-4 md:mb-0 px-5 py-2.5 rounded-sm w-full sm:w-auto;
+  }
+  .btn-purple {
+    @apply text-slate-100 bg-indigo-700 
+hover:bg-slate-100 hover:text-indigo-800 hover:border-indigo-700;
+  }
+  .btn-red {
+    @apply text-slate-100 bg-red-700 hover:bg-slate-100 hover:text-red-800 hover:border-zinc-600;
   }
 }

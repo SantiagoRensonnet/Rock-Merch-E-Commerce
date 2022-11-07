@@ -21,7 +21,7 @@ const Navigation = () => {
           </Link>
           <Link
             className="opacity-70 transition-all ease-out duration-500 hover:opacity-100 hover:duration-500"
-            to="/login"
+            to="/auth"
           >
             LOGIN
           </Link>

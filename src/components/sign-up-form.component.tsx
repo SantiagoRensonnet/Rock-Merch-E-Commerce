@@ -12,6 +12,7 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 export default function SignUpForm() {
+  //form state management
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { username, email, password, confirmPassword } = formFields;
 
@@ -50,6 +51,8 @@ export default function SignUpForm() {
     }
 
     try {
+      //check if user is already authenticated
+      //create user document from what createAuthUserWithEmailAndPassword returns
       const userCredentials = await createAuthUserWithEmailAndPassword(
         email,
         password
@@ -73,9 +76,6 @@ export default function SignUpForm() {
         console.log("user creation encountered an error", message);
       }
     }
-
-    //check if user is already authenticated
-    //create user document from what createAuthUserWithEmailAndPassword returns
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -83,71 +83,66 @@ export default function SignUpForm() {
   };
 
   return (
-    <article className="flex flex-col w-80  justify-between items-center border text-slate-100">
-      <h1 className="m font-openSans font-semibold text-2xl">
-        I do not have an account
-      </h1>
-      <h2 className="mb-6 font-openSans text-lg">
-        Sign up with your email and password
-      </h2>
-      <form onSubmit={handleSubmit}>
-        <div className="sign-up-form">
-          <div className="input-group">
-            <input
-              type="text"
-              name="username"
-              autoComplete="off"
-              placeholder=" "
-              onChange={handleChange}
-              value={username}
-            />
-            <label htmlFor="username">Username</label>
-          </div>
-          <div className="input-group">
-            <input
-              type="text"
-              name="email"
-              autoComplete="off"
-              placeholder=" "
-              onChange={handleChange}
-              value={email}
-            />
-            <label htmlFor="email">Email</label>
-          </div>
-          <div className="input-group">
-            <input
-              type="password"
-              name="password"
-              placeholder=" "
-              autoComplete="off"
-              onChange={handleChange}
-              value={password}
-            />
-            <label htmlFor="password">Password</label>
-          </div>
-          <div className="input-group">
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder=" "
-              autoComplete="off"
-              onChange={handleChange}
-              value={confirmPassword}
-            />
-            <label htmlFor="confirmPassword">Confirm Password</label>
-          </div>
-          <div className="input-group">
-            <button
-              type="submit"
-              className="text-slate-100 bg-indigo-700 hover:bg-slate-100 hover:text-indigo-800
-             border border-transparent hover:border-indigo-700
-              focus:ring-1 focus:ring-indigo-300  
-              font-jost italic font-normal text-sm text-center
-             w-full sm:w-auto px-5 py-2.5 rounded-sm  "
-            >
-              SIGN UP
-            </button>
-          </div>
+    <article className="form-container md:w-[17rem] lg:w-96">
+      <div className="self-start md:self-auto text-center">
+        <h1 className="font-openSansCondensed font-semibold text-2xl xl:text-3xl">
+          I do not have an account
+        </h1>
+        <h2 className="mb-6 font-openSansCondensed text-lg xl:text-xl">
+          Sign up with your email and password
+        </h2>
+      </div>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <input
+            type="text"
+            name="username"
+            autoComplete="off"
+            placeholder=" "
+            onChange={handleChange}
+            value={username}
+            className="form-input"
+          />
+          <label htmlFor="username">Username</label>
+        </div>
+        <div className="input-group">
+          <input
+            type="text"
+            name="email"
+            autoComplete="off"
+            placeholder=" "
+            onChange={handleChange}
+            value={email}
+            className="form-input"
+          />
+          <label htmlFor="email">Email</label>
+        </div>
+        <div className="input-group">
+          <input
+            type="password"
+            name="password"
+            placeholder=" "
+            autoComplete="off"
+            onChange={handleChange}
+            value={password}
+            className="form-input"
+          />
+          <label htmlFor="password">Password</label>
+        </div>
+        <div className="input-group">
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder=" "
+            autoComplete="off"
+            onChange={handleChange}
+            value={confirmPassword}
+            className="form-input"
+          />
+          <label htmlFor="confirmPassword">Confirm Password</label>
+        </div>
+        <div className="input-group">
+          <button className="btn btn-purple">SIGN UP</button>
         </div>
       </form>
     </article>
