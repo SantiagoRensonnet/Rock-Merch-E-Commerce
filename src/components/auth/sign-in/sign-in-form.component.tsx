@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 //Icons
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
 //Firebase Utils
 import {
   signInWithGooglePopup,
@@ -12,18 +11,15 @@ import {
 import { useFormik } from "formik";
 import { signInFormSchema } from "./sign-in-form.schema";
 
-const defaultFormFields = {
-  email: "",
-  password: "",
-};
 const SignInForm = () => {
-  //show password
+  //show password state
   const [passwordVisible, setPasswordVisible] = useState(false);
   //auxiliary functions
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentFromAuth(user);
   };
+  //Server error management
   const [serverError, setServerError] = useState({
     type: "",
     payload: "",
@@ -50,12 +46,9 @@ const SignInForm = () => {
       try {
         //check if user is already authenticated
         //create user document from what createAuthUserWithEmailAndPassword returns
-        const response = await signInAuthUserWithEmailAndPassword(
-          values.email,
-          values.password
-        );
+        await signInAuthUserWithEmailAndPassword(values.email, values.password);
+
         resetForm();
-        console.log(response);
       } catch (error: unknown) {
         const message = error instanceof Error ? error.message : String(error);
         if (message.includes("auth/user-not-found")) {
@@ -76,6 +69,7 @@ const SignInForm = () => {
       }
     },
   });
+  //Server errors update
   useEffect(() => {
     switch (serverError.type) {
       case "user not found":

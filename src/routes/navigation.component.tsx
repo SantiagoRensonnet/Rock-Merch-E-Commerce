@@ -1,6 +1,16 @@
+import { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import handLogo from "../assets/images/hand.png";
+//Firebase app
+import { singOutUser } from "../utils/firebase/firebase.utils";
+//Context
+import { UserContext } from "../contexts/user.context";
+import { UserContextType } from "../contexts/types.context";
+
 const Navigation = () => {
+  //context init
+  const { currentUser } = useContext(UserContext) as UserContextType;
+
   return (
     <>
       <header className="navigation">
@@ -12,19 +22,20 @@ const Navigation = () => {
             alt="home-link-logo"
           />
         </Link>
-        <nav className="text-md sm:text-lg font-medium flex justify-between w-[7rem] sm:w-28 md:w-32">
-          <Link
-            className="opacity-70 transition-all ease-out duration-500 hover:opacity-100 hover:duration-500"
-            to="/shop"
-          >
+        <nav className="text-md font-medium sm:text-lg  flex justify-between ">
+          <Link className="nav-link" to="/shop">
             SHOP
           </Link>
-          <Link
-            className="opacity-70 transition-all ease-out duration-500 hover:opacity-100 hover:duration-500"
-            to="/auth"
-          >
-            LOGIN
-          </Link>
+
+          {currentUser ? (
+            <span className="nav-link" onClick={singOutUser}>
+              LOG OUT
+            </span>
+          ) : (
+            <Link to="/auth" className="nav-link">
+              LOGIN
+            </Link>
+          )}
         </nav>
       </header>
 

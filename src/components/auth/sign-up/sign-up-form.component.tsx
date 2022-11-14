@@ -9,6 +9,7 @@ import { useFormik } from "formik";
 import { signUpFormSchema } from "./sign-up-form.schema";
 
 export default function SignUpForm() {
+  //Server error management
   const [serverError, setServerError] = useState({
     type: "",
     payload: "",
@@ -44,10 +45,9 @@ export default function SignUpForm() {
         const user = userCredentials?.user;
 
         if (user !== undefined) {
-          const userDocRef = await createUserDocumentFromAuth(user, {
+          await createUserDocumentFromAuth(user, {
             displayName: values.username,
           });
-          console.log("usuario creado");
           resetForm();
         } else {
           console.log("user undefined");
@@ -66,6 +66,7 @@ export default function SignUpForm() {
       }
     },
   });
+  //Server errors update
   useEffect(() => {
     switch (serverError.type) {
       case "email in use":

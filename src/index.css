@@ -84,6 +84,9 @@
   .navigation {
     @apply sticky top-0 z-10 h-20 flex justify-between items-center px-8 md:px-16 bg-neutral-900 text-slate-100;
   }
+  .nav-link {
+    @apply cursor-pointer px-2 opacity-70 transition-all ease-out duration-500 hover:opacity-100 hover:duration-500;
+  }
   .main-container {
     @apply min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center;
   }

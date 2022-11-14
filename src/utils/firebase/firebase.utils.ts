@@ -1,12 +1,17 @@
+//Types
+import { User, NextOrObserver } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+//Auth Methods
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  User,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
+//Firestore (Firebase  db)
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -84,3 +89,8 @@ export const signInAuthUserWithEmailAndPassword = async (
 
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const singOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback: NextOrObserver<User>) =>
+  onAuthStateChanged(auth, callback);

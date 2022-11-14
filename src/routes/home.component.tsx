@@ -1,7 +1,7 @@
 //Libraries
 
 //Components
-import CategoryList from "../components/category-list.component";
+import CategoryList from "../components/category-list/category-list.component";
 const Home = () => {
   const categories = [
     {
