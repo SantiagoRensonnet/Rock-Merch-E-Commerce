@@ -81,15 +81,19 @@
   }
 }
 @layer components {
+  /* Header */
   .navigation {
     @apply sticky top-0 z-10 h-20 flex justify-between items-center px-8 md:px-16 bg-neutral-900 text-slate-100;
   }
   .nav-link {
     @apply cursor-pointer px-2 opacity-70 transition-all ease-out duration-500 hover:opacity-100 hover:duration-500;
   }
+  /* Main */
   .main-container {
     @apply min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center;
   }
+
+  /* Home */
   .category-container {
     @apply flex flex-col justify-center items-center  h-[calc((100vh-5rem)/2-1.2rem)] mb-4 sm:mb-0 sm:h-[calc((100vh-5rem)/2-0.5rem)]  md:h-64 
     border-solid border-2 border-zinc-600 grayscale cursor-pointer overflow-hidden;
@@ -102,6 +106,7 @@
     @apply sm:p-4 lg:p-6 p-2 text-center border-solid border-2 border-zinc-600 bg-slate-100 absolute
     transition ease-in-out  duration-500;
   }
+
   .category-container:hover .category-image {
     @apply duration-500  brightness-125   scale-125 translate-y-28 md:scale-110 md:translate-y-8;
   }
@@ -109,6 +114,32 @@
     @apply duration-500 bg-neutral-700 border-zinc-500 text-neutral-100;
   }
 
+  /* Shop */
+  .products-layout {
+    @apply w-full my-auto p-4 sm:p-0 sm:grid sm:gap-4 sm:w-8/12 md:w-10/12 2xl:w-8/12 2xl:py-4 
+    md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
+  }
+  .product-card {
+    @apply h-[calc((100vh-5rem)/2-1.2rem)]
+      sm:h-[calc((100vh-5rem)/2-0.6rem)]
+      lg:h-[calc((100vh-5rem)/3-0.8rem)]
+      2xl:h-[calc((100vh-5rem)/3-1.2rem)]
+      mb-4 sm:mb-0 
+
+      flex flex-col justify-between items-center 
+      text-neutral-100 italic  2xl:text-lg
+      overflow-hidden   cursor-pointer;
+  }
+  .product-thumbnail {
+    @apply w-full grow flex flex-col justify-end items-center bg-no-repeat bg-cover bg-center 
+     border-solid border-2 border-zinc-600 transition ease-in-out duration-300 brightness-100 saturate-50;
+  }
+  .product-card:hover figure {
+    @apply brightness-105 saturate-100;
+  }
+  .product-card:hover button {
+    @apply opacity-90;
+  }
   /* Forms */
   /* common attributes */
   .form-container {
@@ -165,6 +196,9 @@
     @apply border border-transparent focus:ring-1  focus:ring-indigo-300
   font-jost italic font-normal text-sm  text-center
   mb-4 md:mb-0 px-5 py-2.5 rounded-sm w-full sm:w-auto;
+  }
+  .btn-white {
+    @apply bg-neutral-800 text-neutral-100;
   }
   .btn-purple {
     @apply text-slate-100 bg-indigo-700 

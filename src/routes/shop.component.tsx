@@ -1,9 +1,21 @@
+//Libraries
+import { useContext } from "react";
+//Context
+import { ProductsContext } from "../contexts/products.context";
+import { ProductsContextType } from "../contexts/types.context";
+//Components
+import { ProductCard } from "../components/product-card/product-card.component";
 export default function Shop() {
+  //context init
+  const { products } = useContext(ProductsContext) as ProductsContextType;
+
   return (
     <main className="main-container">
-      <div className="my-auto">
-        <h1 className="text-slate-100">SHOP</h1>
-      </div>
+      <section className="products-layout">
+        {products.map((product) => (
+          <ProductCard key={product.id} {...product} />
+        ))}
+      </section>
     </main>
   );
 }
