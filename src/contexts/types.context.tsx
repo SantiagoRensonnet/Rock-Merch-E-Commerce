@@ -6,6 +6,7 @@ export type Product = {
   name: string;
   price: number;
   imageUrl: string;
+  imageYOffset: string; //Y offset from centered position
 };
 //Context Types
 export type UserContextType = {
