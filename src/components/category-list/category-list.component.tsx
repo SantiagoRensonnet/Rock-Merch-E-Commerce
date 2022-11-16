@@ -1,5 +1,5 @@
 //Interface
-import { CategoryListProps } from "../interfaces";
+import { CategoryListProps } from "./types";
 //Components
 import CategoryItem from "./category-item.component";
 //Auxiliary functions
@@ -7,19 +7,19 @@ function getCategoryStyle(length: number, index: number) {
   let style = undefined;
   //Last Row size is 1
   if (length % 3 === 1 && index === length - 1) {
-    style = "col-span-full"; //Last Row style
+    style = "col-span-full mb-0"; //Last Row style
 
     //Last Row size is 2
   } else if (length % 3 === 2 && index === length - 2) {
     style = "md:col-span-3 col-span-full";
   } else if (length % 3 === 2 && index === length - 1) {
-    style = "md:col-span-3 col-span-full"; //Last Row style
+    style = "md:col-span-3 col-span-full mb-0"; //Last Row style
   } else {
     //Normal style
     style = "md:col-span-2 col-span-full";
   }
   //Add default styles (common to all)
-  style += " " + "category-container";
+  style += " " + "category-card";
   return style;
 }
 

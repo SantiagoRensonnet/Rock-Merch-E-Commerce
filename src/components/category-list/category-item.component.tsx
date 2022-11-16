@@ -1,4 +1,4 @@
-import { CategoryUI } from "../../interfaces";
+import { CategoryUI } from "./types";
 const CategoryItem = ({ id, title, imageURL, style }: CategoryUI) => {
   return (
     <article className={style}>
