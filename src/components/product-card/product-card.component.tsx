@@ -1,13 +1,16 @@
+//Context
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart.context";
+import { CartContextType } from "../../contexts/types.context";
 import { Product } from "../../contexts/types.context";
-export const ProductCard = ({
-  id,
-  name,
-  price,
-  imageUrl,
-  imageYOffset,
-}: Product) => {
+export const ProductCard = (productData: Product) => {
+  const { id, name, price, imageUrl, imageYOffset } = productData;
+  const { addItemToCart } = useContext(CartContext) as CartContextType;
+
+  const addProductToCart = () => addItemToCart(productData);
+
   return (
-    <article key={id} className="product-card">
+    <article className="product-card">
       <figure
         style={{ backgroundImage: `url(${imageUrl})` }}
         // className="product-thumbnail bg-[center_top_-4rem]"
@@ -17,7 +20,10 @@ export const ProductCard = ({
             : "product-thumbnail"
         }
       >
-        <button className="btn btn-white w-11/12 py-3.5 mb-1 opacity-0 transition ease-out duration-300">
+        <button
+          className="btn btn-black w-11/12 py-3.5 mb-1 opacity-0 transition-opacity"
+          onClick={addProductToCart}
+        >
           ADD TO CART
         </button>
       </figure>
