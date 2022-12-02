@@ -140,6 +140,10 @@
   .product-card:hover button {
     @apply opacity-90;
   }
+  /*Checkout*/
+  .checkout-section {
+    @apply w-full px-4 sm:p-0 sm:w-8/12 md:w-10/12 2xl:w-8/12 my-2 text-xl font-light text-neutral-100;
+  }
   /* Cart */
   .cart-dropdown-container {
     @apply absolute z-10  h-[calc((100vh-5rem)/2)] w-screen md:w-72

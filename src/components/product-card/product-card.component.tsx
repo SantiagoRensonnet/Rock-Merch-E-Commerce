@@ -4,7 +4,7 @@ import { CartContext } from "../../contexts/cart.context";
 import { CartContextType } from "../../contexts/types.context";
 import { Product } from "../../contexts/types.context";
 export const ProductCard = (productData: Product) => {
-  const { id, name, price, imageUrl, imageYOffset } = productData;
+  const { name, price, imageUrl, imageYOffset } = productData;
   const { addItemToCart } = useContext(CartContext) as CartContextType;
 
   const addProductToCart = () => addItemToCart(productData);

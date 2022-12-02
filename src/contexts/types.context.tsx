@@ -22,7 +22,9 @@ export type ProductsContextType = {
 };
 export type CartContextType = {
   cartItems: Array<CartItem>;
-  addItemToCart: (value: Product) => void;
+  addItemToCart: (value: Product | CartItem) => void;
+  removeItemFromCart: (value: CartItem) => void;
+  clearItemFromCart: (value: CartItem) => void;
   cartCount: number;
   cartTotal: number;
   showCart: boolean;
