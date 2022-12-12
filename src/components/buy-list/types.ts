@@ -3,7 +3,7 @@ type Item = {
   name: string;
   price: number;
   imageUrl: string;
-  imageYOffset: string; //Y offset from centered position
+  imageYOffset?: string; //Y offset from centered position
   qty: number;
 };
 type BuyListProps = {

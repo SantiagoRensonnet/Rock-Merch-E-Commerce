@@ -96,8 +96,8 @@ const SignInForm = () => {
   }, [values]);
   return (
     <article className="form-container  md:w-[25rem] lg:w-auto">
-      <div className="self-start md:self-auto text-center ">
-        <h1 className="font-openSansCondensed font-semibold self-start text-center text-2xl xl:text-3xl">
+      <div className="self-start md:self-auto md:text-center">
+        <h1 className="font-openSansCondensed font-semibold  text-2xl xl:text-3xl">
           I already have an account
         </h1>
         <h2 className="mb-6 font-openSansCondensed text-lg xl:text-xl">

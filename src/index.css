@@ -116,14 +116,14 @@
 
   /* Shop */
   .products-layout {
-    @apply w-full my-auto p-4 sm:p-0 sm:grid sm:gap-4 sm:w-8/12 md:w-10/12 2xl:w-8/12 2xl:py-4 
-    md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
+    @apply w-full    sm:p-0 sm:grid sm:gap-4 
+    md:grid-cols-2 lg:grid-cols-3;
   }
   .product-card {
-    @apply h-[calc((100vh-5rem)/2-1.2rem)]
-      sm:h-[calc((100vh-5rem)/2-0.6rem)]
-      lg:h-[calc((100vh-5rem)/3-0.8rem)]
-      2xl:h-[calc((100vh-5rem)/3-1.2rem)]
+    @apply h-[calc((100vh-5rem)/2-2.3rem)]
+      sm:h-[calc((100vh-5rem)/2-2.3rem)]
+      lg:h-[calc((100vh-5rem)/3-2rem)]
+      2xl:h-[calc((100vh-5rem)/3-2rem)]
       mb-4 sm:mb-0 
 
       flex flex-col justify-between items-center 

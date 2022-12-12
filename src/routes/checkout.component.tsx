@@ -5,9 +5,16 @@ import { CartContext } from "../contexts/cart.context";
 import { CartContextType } from "../contexts/types.context";
 
 export default function CheckOut() {
-  const { cartItems, cartTotal } = useContext(CartContext) as CartContextType;
+  const { cartItems, cartTotal, setShowCart } = useContext(
+    CartContext
+  ) as CartContextType;
   return (
-    <main className="main-container justify-start text-xl text-neutral-100">
+    <main
+      className="main-container justify-start text-xl text-neutral-100"
+      onClick={() => {
+        setShowCart(false);
+      }}
+    >
       <h3>{cartItems.length > 0 ? "Review your bag" : "Your cart is empty"}</h3>
       <BuyList cartItems={cartItems} />
       <section className="checkout-section">

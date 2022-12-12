@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import { CartContextType } from "../../contexts/types.context";
 import { Product } from "../../contexts/types.context";
-export const ProductCard = (productData: Product) => {
+
+export const ItemCard = (productData: Product) => {
   const { name, price, imageUrl, imageYOffset } = productData;
   const { addItemToCart } = useContext(CartContext) as CartContextType;
 
@@ -27,7 +28,7 @@ export const ProductCard = (productData: Product) => {
           ADD TO CART
         </button>
       </figure>
-      <footer className="w-full my-2 flex justify-between cursor-default">
+      <footer className="w-full my-2 lg:mb-0 flex justify-between cursor-default">
         <span>{name}</span>
         <span className="mr-2">{price}</span>
       </footer>

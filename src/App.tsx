@@ -1,5 +1,6 @@
 //Libraries
 import { Route, Routes } from "react-router-dom";
+
 //Routes
 import Navigation from "./routes/navigation.component";
 import Home from "./routes/home.component";

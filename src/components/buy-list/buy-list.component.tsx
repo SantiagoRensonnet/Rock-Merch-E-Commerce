@@ -1,6 +1,6 @@
 import { BuyListProps } from "./types";
 //Components
-import { ItemDetail } from "./item-detail-component";
+import { ItemDetail } from "./item-detail.component";
 
 export const BuyList = (props: BuyListProps) => {
   const { cartItems } = props;

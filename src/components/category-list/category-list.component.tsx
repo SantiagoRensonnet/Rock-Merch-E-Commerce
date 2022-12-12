@@ -1,5 +1,7 @@
-//Interface
-import { CategoryListProps } from "./types";
+//Context
+import { useContext } from "react";
+import { CategoriesContext } from "../../contexts/categories.context";
+import { CategoriesContextType } from "../../contexts/types.context";
 //Components
 import CategoryItem from "./category-item.component";
 //Auxiliary functions
@@ -23,17 +25,20 @@ function getCategoryStyle(length: number, index: number) {
   return style;
 }
 
-const CategoryList = ({ categories }: CategoryListProps) => {
+const CategoryList = () => {
+  //context init
+  const { categories } = useContext(CategoriesContext) as CategoriesContextType;
+
   return (
     <section className="my-auto w-full p-4  sm:p-0  sm:grid sm:gap-3 sm:w-6/12 md:grid-cols-6 md:gap-4 md:w-10/12  xl:w-8/12  ">
-      {categories.map((category, index) => {
+      {categories?.map((category, index) => {
         const categoryStyle = getCategoryStyle(categories.length, index);
         return (
           <CategoryItem
-            key={category.id}
-            id={category.id}
-            title={category.title}
-            imageURL={category.imageURL}
+            key={index}
+            id={index}
+            title={category.title.toUpperCase()}
+            imageURL={category.cover}
             style={categoryStyle}
           />
         );

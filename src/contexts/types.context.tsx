@@ -6,19 +6,26 @@ export interface Product {
   name: string;
   price: number;
   imageUrl: string;
-  imageYOffset: string; //Y offset from centered position
+  imageYOffset?: string;
 }
 export interface CartItem extends Product {
   qty: number;
 }
+//Categories Types
+export interface Category {
+  title: string;
+  cover: string;
+  items: Array<Product>;
+}
+
 //Context Types
 export type UserContextType = {
   currentUser: User | null;
   setCurrentUser: (value: User | null) => void;
 };
-export type ProductsContextType = {
-  products: Array<Product>;
-  setProducts: (value: Array<Product>) => void;
+export type CategoriesContextType = {
+  categories: Array<Category>;
+  setCategories: (value: Array<Category>) => void;
 };
 export type CartContextType = {
   cartItems: Array<CartItem>;

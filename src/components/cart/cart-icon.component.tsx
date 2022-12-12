@@ -11,7 +11,9 @@ export const CartIcon = () => {
   return (
     <div
       className="nav-link relative top-1 flex justify-center items-end"
-      onClick={() => setShowCart(!showCart)}
+      onClick={() => {
+        setShowCart(!showCart);
+      }}
     >
       <img className="invert w-7 " src={shoppingIcon} alt="shopping-bag-icon" />
       <span className="absolute text-sm">{cartCount}</span>
