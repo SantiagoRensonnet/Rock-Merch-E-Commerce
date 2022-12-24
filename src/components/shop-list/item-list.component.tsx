@@ -4,11 +4,18 @@ import { ItemListProps } from "./types";
 import { ItemCard } from "./item-card.component";
 
 export const ItemList = (props: ItemListProps) => {
-  const { items } = props;
+  const { items, isMobile = false, cardsShownOnMobile } = props;
   return (
-    <section className="products-layout">
-      {items?.map((item) => (
-        <ItemCard key={item.id} {...item} />
+    <section className="shop--products-layout ">
+      {items?.map((item, index) => (
+        <ItemCard
+          key={item.id}
+          item={item}
+          showCardOnMobile={
+            cardsShownOnMobile < 0 || index < cardsShownOnMobile
+          }
+          isMobile={isMobile}
+        />
       ))}
     </section>
   );

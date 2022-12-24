@@ -30,15 +30,18 @@ const CategoryList = () => {
   const { categories } = useContext(CategoriesContext) as CategoriesContextType;
 
   return (
-    <section className="my-auto w-full p-4  sm:p-0  sm:grid sm:gap-3 sm:w-6/12 md:grid-cols-6 md:gap-4 md:w-10/12  xl:w-8/12  ">
+    <section className="sm:my-4 w-full p-4  sm:p-0  sm:grid sm:gap-3 sm:w-6/12 md:grid-cols-6 md:gap-4 md:w-10/12  xl:w-8/12  ">
       {categories?.map((category, index) => {
         const categoryStyle = getCategoryStyle(categories.length, index);
+        const { title, cover, imageXOffset = "", imageYOffset = "" } = category;
         return (
           <CategoryItem
             key={index}
             id={index}
-            title={category.title.toUpperCase()}
-            imageURL={category.cover}
+            title={title.toUpperCase()}
+            imageURL={cover}
+            imageXOffset={imageXOffset}
+            imageYOffset={imageYOffset}
             style={categoryStyle}
           />
         );

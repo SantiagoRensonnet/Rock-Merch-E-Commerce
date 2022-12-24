@@ -70,6 +70,8 @@ export const getCategoriesAndDocuments = async () => {
   return querySnapshot.docs.map((docSnapshot) => ({
     title: docSnapshot.data().title,
     cover: docSnapshot.data().cover,
+    imageXOffset: docSnapshot.data()?.imageXOffset,
+    imageYOffset: docSnapshot.data()?.imageYOffset,
     items: docSnapshot.data().items,
   }));
 };

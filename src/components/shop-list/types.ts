@@ -7,4 +7,11 @@ export interface Product {
 }
 export interface ItemListProps {
   items: Product[];
+  isMobile?: boolean;
+  cardsShownOnMobile: number;
+}
+export interface ItemCardProps {
+  item: Product;
+  showCardOnMobile: boolean;
+  isMobile: boolean;
 }

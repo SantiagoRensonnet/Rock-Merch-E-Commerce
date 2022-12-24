@@ -99,7 +99,7 @@
     border-solid border-2 border-zinc-600 grayscale cursor-pointer overflow-hidden;
   }
   .category-image {
-    @apply translate-y-16   scale-105  md:translate-y-0  
+    @apply scale-105  translate-y-16  
     transition ease-in-out  duration-500;
   }
   .category-description {
@@ -108,36 +108,43 @@
   }
 
   .category-card:hover .category-image {
-    @apply duration-500  brightness-125   scale-125 translate-y-28 md:scale-110 md:translate-y-8;
+    @apply duration-500  brightness-125   scale-125 translate-y-[20%] md:scale-110 md:translate-y-[20%];
   }
   .category-card:hover .category-description {
     @apply duration-500 bg-neutral-700 border-zinc-500 text-neutral-100;
   }
 
   /* Shop */
-  .products-layout {
+  .shop--products-layout {
     @apply w-full    sm:p-0 sm:grid sm:gap-4 
-    md:grid-cols-2 lg:grid-cols-3;
+      md:grid-cols-3;
   }
-  .product-card {
+
+  .shop--product-card {
     @apply h-[calc((100vh-5rem)/2-2.3rem)]
       sm:h-[calc((100vh-5rem)/2-2.3rem)]
-      lg:h-[calc((100vh-5rem)/3-2rem)]
-      2xl:h-[calc((100vh-5rem)/3-2rem)]
+      md:h-[calc((100vh-5rem)/2-5rem)]
       mb-4 sm:mb-0 
 
       flex flex-col justify-between items-center 
       text-neutral-100 italic  2xl:text-lg
       overflow-hidden   cursor-pointer;
   }
+  .shop--product-card button {
+    @apply btn btn-black w-11/12 py-3.5 mb-1 opacity-0 transition-opacity;
+  }
+  .shop--product-card > footer {
+    @apply w-full my-2 md:mb-0 flex justify-between cursor-default;
+  }
+
   .product-thumbnail {
     @apply w-full grow flex flex-col justify-end items-center bg-no-repeat bg-cover bg-center 
      border-solid border-2 border-zinc-600 transition ease-in-out duration-150 brightness-100 saturate-50;
   }
-  .product-card:hover figure {
+  .shop--product-card:hover figure {
     @apply brightness-105 saturate-100;
   }
-  .product-card:hover button {
+  .shop--product-card:hover button {
     @apply opacity-90;
   }
   /*Checkout*/

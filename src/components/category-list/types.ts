@@ -7,6 +7,8 @@ type CategoryUI = {
   id: number;
   title: string;
   imageURL: string;
+  imageXOffset: string;
+  imageYOffset: string;
   style: string;
 };
 interface CategoryListProps {
