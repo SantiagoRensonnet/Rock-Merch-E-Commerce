@@ -13,7 +13,10 @@ const CategoryItem = ({
     let style = "category-image";
 
     imageXOffset && (style += ` relative left-${imageXOffset}`);
-    imageYOffset && (style += ` relative top-${imageYOffset}`);
+    imageYOffset &&
+      (style += ` relative top-${parseInt(imageYOffset) * 2} md:top-${parseInt(
+        imageYOffset
+      )} lg:top-${parseInt(imageYOffset) * 4}`);
     return style;
   };
   return (

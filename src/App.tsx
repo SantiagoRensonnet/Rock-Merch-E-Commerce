@@ -10,6 +10,7 @@ import Navigation from "./routes/navigation.component";
 import Home from "./routes/home.component";
 import Authentication from "./routes/authentication.component";
 import Shop from "./routes/shop.component";
+import { ItemDetail } from "./routes/item-detail.component";
 import CheckOut from "./routes/checkout.component";
 import { Error404 } from "./routes/error404.component";
 //Components
@@ -32,6 +33,7 @@ const App = () => {
               />
             ))}
           </Route>
+          <Route path="item/:itemId" element={<ItemDetail />} />
           <Route path="auth" element={<Authentication />} />
           <Route path="checkout" element={<CheckOut />} />
           <Route path="*" element={<Error404 />} />

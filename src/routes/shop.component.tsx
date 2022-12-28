@@ -1,6 +1,6 @@
 //Libraries
 import { useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 //Context
 import { CategoriesContext } from "../contexts/categories.context";
 import { CategoriesContextType } from "../contexts/types.context";
@@ -13,7 +13,7 @@ export default function Shop() {
   //context init
   const { categories } = useContext(CategoriesContext) as CategoriesContextType;
   const isMobile = useResize();
-  const navigate = useNavigate();
+
   return (
     <main className="main-container">
       {categories?.map((category, index) => (

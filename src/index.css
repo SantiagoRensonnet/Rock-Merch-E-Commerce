@@ -99,7 +99,7 @@
     border-solid border-2 border-zinc-600 grayscale cursor-pointer overflow-hidden;
   }
   .category-image {
-    @apply scale-105  translate-y-16  
+    @apply scale-105 md:scale-110
     transition ease-in-out  duration-500;
   }
   .category-description {
@@ -108,7 +108,7 @@
   }
 
   .category-card:hover .category-image {
-    @apply duration-500  brightness-125   scale-125 translate-y-[20%] md:scale-110 md:translate-y-[20%];
+    @apply duration-500  brightness-125  scale-125 translate-y-[10%];
   }
   .category-card:hover .category-description {
     @apply duration-500 bg-neutral-700 border-zinc-500 text-neutral-100;
@@ -147,6 +147,26 @@
   .shop--product-card:hover button {
     @apply opacity-90;
   }
+  /* Item Detail */
+  .item-detail--card-desktop {
+    @apply h-[calc(100vh-7.5rem)] w-full sm:w-8/12 md:w-10/12  2xl:w-8/12 px-4 sm:p-0 flex flex-col md:grid md:grid-cols-6 md:gap-3;
+  }
+  .item-detail--card-mobile {
+    @apply h-[calc(100vh-7.5rem)] w-full sm:w-8/12 px-4 sm:p-0 flex flex-col;
+  }
+  .item-detail--card-desktop .figure-btn {
+    @apply btn btn-black w-11/12 py-3.5 mb-1 opacity-0 transition-opacity;
+  }
+  .item-detail--card-desktop > figure:hover {
+    @apply brightness-105 saturate-100;
+  }
+  .item-detail--card-desktop > figure:hover .figure-btn {
+    @apply opacity-90;
+  }
+  .item-thumbnail {
+    @apply bg-no-repeat bg-cover bg-center  border-solid border-2 border-zinc-600 col-span-3 aspect-[9/16] md:aspect-auto flex flex-col justify-end items-center transition ease-in-out duration-150 brightness-100 saturate-50;
+  }
+
   /*Checkout*/
   .checkout-section {
     @apply w-full px-4 sm:p-0 sm:w-8/12 md:w-10/12 2xl:w-8/12 my-2 text-xl font-light text-neutral-100;
@@ -218,13 +238,13 @@
  transition-colors;
   }
   .btn-black {
-    @apply bg-neutral-800 text-neutral-100 hover:bg-neutral-100 hover:text-neutral-900 hover:border-zinc-700 focus:ring-neutral-300;
+    @apply bg-neutral-800 text-neutral-100 hover:bg-neutral-100 hover:text-neutral-900 hover:border-zinc-700 focus:ring-neutral-300  focus:ring-opacity-60;
   }
   .btn-purple {
     @apply text-slate-100 bg-indigo-700 
-hover:bg-slate-100 hover:text-indigo-800 hover:border-indigo-700 focus:ring-indigo-300;
+hover:bg-slate-100 hover:text-indigo-800 hover:border-indigo-700 focus:ring-indigo-300 focus:ring-opacity-60;
   }
   .btn-red {
-    @apply text-slate-100 bg-red-700 hover:bg-slate-100 hover:text-red-800 hover:border-zinc-600 focus:ring-red-300;
+    @apply text-slate-100 bg-red-700 hover:bg-slate-100 hover:text-red-800 hover:border-zinc-600 focus:ring-red-300 focus:ring-opacity-60;
   }
 }
