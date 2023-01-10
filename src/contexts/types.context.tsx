@@ -40,3 +40,22 @@ export type CartContextType = {
   showCart: boolean;
   setShowCart: (value: boolean) => void;
 };
+
+//Actions and Reducers
+export type USER_ACTION = {
+  type: string;
+  payload: User | null;
+};
+export type CartAction =
+  | {
+      type: "UPDATE_CART_ITEMS";
+      payload: { cartItems: CartItem[]; cartCount: number; cartTotal: number };
+    }
+  | { type: "SET_IS_CART_OPEN"; payload: boolean };
+
+export type CartState = {
+  cartItems: Array<CartItem>;
+  cartCount: number;
+  cartTotal: number;
+  showCart: boolean;
+};
