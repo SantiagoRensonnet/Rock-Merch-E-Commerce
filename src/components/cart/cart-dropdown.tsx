@@ -3,14 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import { CartContextType } from "../../contexts/types.context";
+
 //Components
 import { CartItems } from "./cart-items";
 
-export const CartDropdown = () => {
+export const CartDropdown = (props: { style: string }) => {
   const { cartTotal, cartItems } = useContext(CartContext) as CartContextType;
   const navigate = useNavigate();
+
   return (
-    <div className="cart-dropdown-container">
+    <div className={props.style}>
       <header className="mt-1">
         <h3 className="font-normal">SHOPPING LIST</h3>
       </header>

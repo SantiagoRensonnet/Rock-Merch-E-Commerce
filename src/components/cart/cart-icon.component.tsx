@@ -1,4 +1,4 @@
-import shoppingIcon from "../../assets/images/shopping-bag.svg";
+import shoppingIcon from "../../assets/icons/shopping-bag.svg";
 //Context
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useReducer } from "react";
 import { onAuthStateChangedListener } from "../utils/firebase/firebase.utils";
 import { User } from "@firebase/auth";
-import { USER_ACTION } from "./types.context";
+import { UserAction } from "./types.context";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -14,7 +14,7 @@ export const USER_ACTION_TYPES = {
   SET_CURRENT_USER: "SET_CURRENT_USER",
 };
 //reducer
-const userReducer = (state: any, action: USER_ACTION) => {
+const userReducer = (state: any, action: UserAction) => {
   const { type, payload } = action;
   switch (type) {
     case USER_ACTION_TYPES.SET_CURRENT_USER:

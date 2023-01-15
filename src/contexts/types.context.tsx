@@ -1,5 +1,4 @@
 import { User } from "@firebase/auth";
-import { Dispatch, SetStateAction } from "react";
 //Object Types
 export interface Product {
   id: number;
@@ -42,7 +41,7 @@ export type CartContextType = {
 };
 
 //Actions and Reducers
-export type USER_ACTION = {
+export type UserAction = {
   type: string;
   payload: User | null;
 };
