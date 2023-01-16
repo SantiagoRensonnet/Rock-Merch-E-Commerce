@@ -1,10 +1,13 @@
 //Libraries
 import { Route, Routes } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { onAuthStateChangedListener } from "./utils/firebase/firebase.utils";
 //Context
 import { CategoriesContext } from "./contexts/categories.context";
 import { CategoriesContextType } from "./contexts/types.context";
-
+//Redux
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "./store/user/user.action";
 //Routes
 import Navigation from "./routes/navigation.component";
 import Home from "./routes/home.component";
@@ -17,6 +20,14 @@ import { Error404 } from "./routes/error404.component";
 import { Category } from "./routes/category/category.component";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      dispatch(setCurrentUser(user));
+    });
+    //cleaning (stop listening) when unmounting
+    return unsubscribe;
+  }, []);
   const { categories } = useContext(CategoriesContext) as CategoriesContextType;
   return (
     <div className="font-jost bg-neutral-900">

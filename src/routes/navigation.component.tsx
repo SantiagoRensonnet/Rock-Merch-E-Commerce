@@ -3,6 +3,9 @@ import handLogo from "../assets/icons/hand.png";
 //Libraries
 import { useContext, useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
+//Redux
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../store/user/user.selector";
 //Components
 import { CartIcon } from "../components/cart/cart-icon.component";
 import { CartDropdown } from "../components/cart/cart-dropdown";
@@ -18,10 +21,10 @@ import { useResize } from "../hooks/useResize";
 import { singOutUser, getUserData } from "../utils/firebase/firebase.utils";
 
 const Navigation = () => {
+  const currentUser = useSelector(selectCurrentUser);
   //modal setup
   const [modalIsOpen, setModalIsOpen] = useState(false);
   //context init
-  const { currentUser } = useContext(UserContext) as UserContextType;
   const { showCart } = useContext(CartContext) as CartContextType;
 
   const [retrigger, setRetrigger] = useState(false);
