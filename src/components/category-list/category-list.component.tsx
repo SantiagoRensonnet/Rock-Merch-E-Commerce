@@ -1,9 +1,10 @@
-//Context
-import { useContext } from "react";
-import { CategoriesContext } from "../../contexts/categories.context";
-import { CategoriesContextType } from "../../contexts/types.context";
+//Redux
+import { useSelector } from "react-redux";
+//Selectors
+import { selectCategories } from "../../store/categories/categories.selector";
 //Components
 import CategoryItem from "./category-item.component";
+
 //Auxiliary functions
 function getCategoryStyle(length: number, index: number) {
   let style = undefined;
@@ -27,11 +28,11 @@ function getCategoryStyle(length: number, index: number) {
 
 const CategoryList = () => {
   //context init
-  const { categories } = useContext(CategoriesContext) as CategoriesContextType;
+  const { categories } = useSelector(selectCategories);
 
   return (
     <section className="sm:my-4 w-full p-4  sm:p-0  sm:grid sm:gap-3 sm:w-6/12 md:grid-cols-6 md:gap-4 md:w-10/12  xl:w-8/12  ">
-      {categories?.map((category, index) => {
+      {categories?.map((category: any, index: any) => {
         const categoryStyle = getCategoryStyle(categories.length, index);
         const { title, cover, imageXOffset = "", imageYOffset = "" } = category;
         return (

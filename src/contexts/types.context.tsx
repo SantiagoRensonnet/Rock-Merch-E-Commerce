@@ -45,6 +45,10 @@ export type UserAction = {
   type: string;
   payload: User | null;
 };
+export type CategoriesAction = {
+  type: string;
+  payload: Category[] | null;
+};
 export type CartAction =
   | {
       type: "UPDATE_CART_ITEMS";

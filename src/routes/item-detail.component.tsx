@@ -4,10 +4,12 @@ import { useContext } from "react";
 import { useResize } from "../hooks/useResize";
 //Context
 import { Category } from "../contexts/types.context";
-import { CategoriesContext } from "../contexts/categories.context";
-import { CategoriesContextType } from "../contexts/types.context";
 import { CartContext } from "../contexts/cart.context";
 import { CartContextType } from "../contexts/types.context";
+//redux
+import { useSelector } from "react-redux";
+//Selectors
+import { selectCategories } from "../store/categories/categories.selector";
 
 const findItembyId = (categoryArray: Category[], itemId: number) => {
   for (let i = 0; i < categoryArray.length; i++) {
@@ -21,7 +23,7 @@ const findItembyId = (categoryArray: Category[], itemId: number) => {
 };
 export const ItemDetail = () => {
   const { itemId } = useParams();
-  const { categories } = useContext(CategoriesContext) as CategoriesContextType;
+  const { categories } = useSelector(selectCategories);
   const { addItemToCart } = useContext(CartContext) as CartContextType;
   const isMobile = useResize();
 

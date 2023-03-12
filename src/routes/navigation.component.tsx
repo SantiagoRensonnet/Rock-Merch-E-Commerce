@@ -11,7 +11,6 @@ import { CartIcon } from "../components/cart/cart-icon.component";
 import { CartDropdown } from "../components/cart/cart-dropdown";
 import ChoiceModal from "../components/modals/ChoiceModal";
 //Context
-import { UserContext } from "../contexts/user.context";
 import { UserContextType } from "../contexts/types.context";
 import { CartContext } from "../contexts/cart.context";
 import { CartContextType } from "../contexts/types.context";

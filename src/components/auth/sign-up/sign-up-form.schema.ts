@@ -8,7 +8,7 @@ export const signUpFormSchema = yup.object().shape({
     .required(requiredMessage)
     .matches(
       /(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$)/,
-      "Must contain 8 characters, one uppercase, one lowercase and one number"
+      "Must contain at least 8 characters, one uppercase, one lowercase and one number"
     ),
   confirmPassword: yup
     .string()

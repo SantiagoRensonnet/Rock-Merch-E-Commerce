@@ -1,13 +1,15 @@
 //Libraries
 import { Route, Routes } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { onAuthStateChangedListener } from "./utils/firebase/firebase.utils";
-//Context
-import { CategoriesContext } from "./contexts/categories.context";
-import { CategoriesContextType } from "./contexts/types.context";
+import { useEffect } from "react";
+import {
+  onAuthStateChangedListener,
+  getCategoriesAndDocuments,
+} from "./utils/firebase/firebase.utils";
 //Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "./store/user/user.action";
+import { setCategories } from "./store/categories/categories.action";
+import { selectCategories } from "./store/categories/categories.selector";
 //Routes
 import Navigation from "./routes/navigation.component";
 import Home from "./routes/home.component";
@@ -28,7 +30,15 @@ const App = () => {
     //cleaning (stop listening) when unmounting
     return unsubscribe;
   }, []);
-  const { categories } = useContext(CategoriesContext) as CategoriesContextType;
+  useEffect(() => {
+    const getCategories = async () => {
+      const apiResponse = await getCategoriesAndDocuments();
+      dispatch(setCategories(apiResponse));
+    };
+    getCategories();
+  }, []);
+  const { categories } = useSelector(selectCategories);
+
   return (
     <div className="font-jost bg-neutral-900">
       <Routes>
@@ -36,7 +46,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="shop/">
             <Route index element={<Shop />} />
-            {categories?.map((category, index) => (
+            {categories?.map((category: any, index: any) => (
               <Route
                 key={index}
                 path={category.title.toLowerCase()}
