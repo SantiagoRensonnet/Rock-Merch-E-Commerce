@@ -1,4 +1,4 @@
-interface Product {
+export interface Product {
   id: number;
   name: string;
   price: number;
@@ -6,6 +6,7 @@ interface Product {
   imageXOffset?: string;
   imageYOffset?: string;
 }
+//Categories Types
 interface Category {
   title: string;
   cover: string;
@@ -13,8 +14,8 @@ interface Category {
   imageXOffset?: string;
   imageYOffset?: string;
 }
+export type Categories = Array<Category>;
 
-interface CategoryPageProps {
-  category: Category;
-}
-export type { CategoryPageProps };
+export const CATEGORIES_ACTION_TYPES = {
+  SET_CATEGORIES: "category/SET_CATEGORIES",
+};

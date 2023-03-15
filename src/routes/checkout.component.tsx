@@ -1,18 +1,17 @@
 import { BuyList } from "../components/buy-list/buy-list.component";
-//Context
-import { useContext } from "react";
-import { CartContext } from "../contexts/cart.context";
-import { CartContextType } from "../contexts/types.context";
-
+//Redux
+import { useSelector, useDispatch } from "react-redux";
+import { selectCartItems, selectCartTotal } from "../store/cart/cart.selector";
+import { setShowCart } from "../store/cart/cart.action";
 export default function CheckOut() {
-  const { cartItems, cartTotal, setShowCart } = useContext(
-    CartContext
-  ) as CartContextType;
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
   return (
     <main
       className="main-container justify-start text-xl text-neutral-100"
       onClick={() => {
-        setShowCart(false);
+        dispatch(setShowCart(false));
       }}
     >
       <h3>{cartItems.length > 0 ? "Review your bag" : "Your cart is empty"}</h3>

@@ -6,15 +6,10 @@ interface Product {
   imageXOffset?: string;
   imageYOffset?: string;
 }
-interface Category {
+export interface Category {
   title: string;
   cover: string;
   items: Array<Product>;
   imageXOffset?: string;
   imageYOffset?: string;
 }
-
-interface CategoryPageProps {
-  category: Category;
-}
-export type { CategoryPageProps };

@@ -1,9 +1,10 @@
 //Libraries
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-//Context
-import { CategoriesContext } from "../contexts/categories.context";
-import { CategoriesContextType } from "../contexts/types.context";
+//redux
+import { useSelector } from "react-redux";
+//selectors
+import { selectCategories } from "../store/categories/categories.selector";
 //Components
 import { ItemList } from "../components/shop-list/item-list.component";
 //Hooks
@@ -11,12 +12,12 @@ import { useResize } from "../hooks/useResize";
 
 export default function Shop() {
   //context init
-  const { categories } = useContext(CategoriesContext) as CategoriesContextType;
+  const { categories } = useSelector(selectCategories);
   const isMobile = useResize();
 
   return (
     <main className="main-container">
-      {categories?.map((category, index) => (
+      {categories?.map((category: any, index: any) => (
         <div
           key={index}
           className="w-full sm:w-8/12 md:w-10/12  2xl:w-8/12 my-auto p-4 2xl:py-4"
@@ -30,7 +31,7 @@ export default function Shop() {
             </Link>
           </h1>
           <ItemList
-            items={category.items.filter((e, index) => index < 3)}
+            items={category.items.filter((e: any, index: any) => index < 3)}
             cardsShownOnMobile={2} // -1 for show all cards on mobile
             isMobile={isMobile}
           />

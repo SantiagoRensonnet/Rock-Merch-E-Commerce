@@ -1,26 +1,70 @@
 //Assets
-import handLogo from "../assets/images/hand.png";
+import handLogo from "../assets/icons/hand.png";
 //Libraries
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
+//Redux
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../store/user/user.selector";
+import { selectShowCart } from "../store/cart/cart.selector";
 //Components
 import { CartIcon } from "../components/cart/cart-icon.component";
 import { CartDropdown } from "../components/cart/cart-dropdown";
-//Context
-import { UserContext } from "../contexts/user.context";
-import { UserContextType } from "../contexts/types.context";
-import { CartContext } from "../contexts/cart.context";
-import { CartContextType } from "../contexts/types.context";
+import ChoiceModal from "../components/modals/ChoiceModal";
+//Hooks
+import { useResize } from "../hooks/useResize";
 //Firebase app
-import { singOutUser } from "../utils/firebase/firebase.utils";
+import { singOutUser, getUserData } from "../utils/firebase/firebase.utils";
 
 const Navigation = () => {
+  const currentUser = useSelector(selectCurrentUser);
+  const showCart = useSelector(selectShowCart);
+  //modal setup
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   //context init
-  const { currentUser } = useContext(UserContext) as UserContextType;
-  const { showCart } = useContext(CartContext) as CartContextType;
+  // const { showCart } = useContext(CartContext) as CartContextType;
 
+  const [retrigger, setRetrigger] = useState(false);
+  const [userName, setUserName] = useState("");
+  const isMobile = useResize();
+
+  //Modal Handlers
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  useEffect(() => {
+    const fetchUserData = async () => await getUserData(currentUser);
+    fetchUserData().then((response) => {
+      if (
+        response.state === "error" &&
+        response.errorCode === "No such document!"
+      ) {
+        setRetrigger(true);
+      } else {
+        setRetrigger(false);
+      }
+      setUserName(response?.displayName);
+    });
+  }, [currentUser, retrigger]);
   return (
     <>
+      <ChoiceModal
+        description={"Do you want to logout?"}
+        chooseYes={() => {
+          singOutUser();
+          closeModal();
+        }}
+        chooseNo={closeModal}
+        openModal={modalIsOpen}
+        closeModal={closeModal}
+      />
+      {showCart && isMobile && (
+        <CartDropdown style={"cart-dropdown-container--mobile"} />
+      )}
       <header className="navigation">
         <Link to="">
           <img
@@ -30,13 +74,14 @@ const Navigation = () => {
             alt="home-link-icon"
           />
         </Link>
+
         <nav className="relative  flex  items-baseline  justify-between text-base font-medium sm:text-lg">
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
 
           {currentUser ? (
-            <span className="nav-link" onClick={singOutUser}>
+            <span className="nav-link" onClick={() => openModal()}>
               LOG OUT
             </span>
           ) : (
@@ -45,8 +90,20 @@ const Navigation = () => {
             </Link>
           )}
           <CartIcon />
-          {showCart && <CartDropdown />}
+          {showCart && !isMobile && (
+            <CartDropdown style={"cart-dropdown-container--desktop"} />
+          )}
         </nav>
+        {userName && (
+          <div
+            className=" bg-neutral-300  w-6 h-6 rounded-full flex justify-center items-center cursor-pointer"
+            onClick={() => openModal()}
+          >
+            <span className="text-neutral-800 font-light font-jost text-xl">
+              {userName.toUpperCase().slice(0, 1)}
+            </span>
+          </div>
+        )}
       </header>
 
       <Outlet />

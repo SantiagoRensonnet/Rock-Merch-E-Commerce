@@ -67,6 +67,7 @@ export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
+
   return querySnapshot.docs.map((docSnapshot) => ({
     title: docSnapshot.data().title,
     cover: docSnapshot.data().cover,
@@ -74,6 +75,20 @@ export const getCategoriesAndDocuments = async () => {
     imageYOffset: docSnapshot.data()?.imageYOffset,
     items: docSnapshot.data().items,
   }));
+};
+export const getUserData = async (userAuth: User | null) => {
+  if (userAuth) {
+    const userDocRef = doc(db, "users", userAuth.uid); //creates reference to users->userUid
+    const userSnapshot = await getDoc(userDocRef); //snapshot -> the data in users->userUid
+    if (userSnapshot.exists()) {
+      return userSnapshot.data();
+    } else {
+      // doc.data() will be undefined in this case
+      return { state: "error", errorCode: "No such document!" };
+    }
+  } else {
+    return { state: "No user conected" };
+  }
 };
 export const createUserDocumentFromAuth = async (
   userAuth: User,

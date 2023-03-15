@@ -3,17 +3,19 @@ import { Item } from "./types";
 //Icons
 import { MdArrowLeft, MdArrowRight, MdDeleteOutline } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
-
-//Context
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
-import { CartContextType } from "../../contexts/types.context";
+//Redux
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selector";
+import {
+  addItemToCart,
+  removeItemFromCart,
+  clearItemFromCart,
+} from "../../store/cart/cart.action";
 
 export const ItemDetail = (item: Item) => {
   const { name, price, imageUrl, qty } = item;
-  const { addItemToCart, removeItemFromCart, clearItemFromCart } = useContext(
-    CartContext
-  ) as CartContextType;
+  const dispatch = useDispatch();
+  const cart = useSelector(selectCartItems);
   return (
     <article>
       <hr className="bg-zinc-600 h-px border-none" />
@@ -25,14 +27,14 @@ export const ItemDetail = (item: Item) => {
 
         <h3 className="m-auto">{name}</h3>
         <div className="m-auto flex items-center">
-          <button onClick={() => removeItemFromCart(item)}>
+          <button onClick={() => dispatch(removeItemFromCart(cart, item))}>
             <MdArrowLeft
               style={{ width: "1.5rem", height: "1.5rem" }}
               className={"nav-link"}
             />
           </button>
           <span>{qty}</span>
-          <button onClick={() => addItemToCart(item)}>
+          <button onClick={() => dispatch(addItemToCart(cart, item))}>
             <MdArrowRight
               style={{ width: "1.5rem", height: "1.5rem" }}
               className={"nav-link"}
@@ -41,7 +43,10 @@ export const ItemDetail = (item: Item) => {
         </div>
 
         <span className="m-auto">${qty * price}</span>
-        <button onClick={() => clearItemFromCart(item)} className="m-auto">
+        <button
+          onClick={() => dispatch(clearItemFromCart(cart, item))}
+          className="m-auto"
+        >
           <RiDeleteBin5Line
             style={{ width: "1.5rem", height: "1.5rem" }}
             className={"nav-link"}
