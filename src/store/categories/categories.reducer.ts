@@ -4,7 +4,10 @@ const INITIAL_STATE = {
 };
 
 //reducer
-export const categoriesReducer = (state: any = INITIAL_STATE, action: any) => {
+export const categoriesReducer = (
+  state: any = INITIAL_STATE,
+  action: any = {}
+) => {
   const { type, payload } = action;
   switch (type) {
     case CATEGORIES_ACTION_TYPES.SET_CATEGORIES:

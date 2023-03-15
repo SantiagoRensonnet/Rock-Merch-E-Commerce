@@ -1,16 +1,15 @@
-//Context
-import { useContext } from "react";
-import { CartContext } from "../contexts/cart.context";
-import { CartContextType } from "../contexts/types.context";
+//Redux
+import { useDispatch } from "react-redux";
+import { setShowCart } from "../store/cart/cart.action";
 //Components
 import CategoryList from "../components/category-list/category-list.component";
 const Home = () => {
-  const { setShowCart } = useContext(CartContext) as CartContextType;
+  const dispatch = useDispatch();
   return (
     <main
       className="main-container"
       onClick={() => {
-        setShowCart(false);
+        dispatch(setShowCart(false));
       }}
     >
       <CategoryList />

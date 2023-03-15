@@ -6,14 +6,11 @@ import { Outlet, Link } from "react-router-dom";
 //Redux
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../store/user/user.selector";
+import { selectShowCart } from "../store/cart/cart.selector";
 //Components
 import { CartIcon } from "../components/cart/cart-icon.component";
 import { CartDropdown } from "../components/cart/cart-dropdown";
 import ChoiceModal from "../components/modals/ChoiceModal";
-//Context
-import { UserContextType } from "../contexts/types.context";
-import { CartContext } from "../contexts/cart.context";
-import { CartContextType } from "../contexts/types.context";
 //Hooks
 import { useResize } from "../hooks/useResize";
 //Firebase app
@@ -21,10 +18,11 @@ import { singOutUser, getUserData } from "../utils/firebase/firebase.utils";
 
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
+  const showCart = useSelector(selectShowCart);
   //modal setup
   const [modalIsOpen, setModalIsOpen] = useState(false);
   //context init
-  const { showCart } = useContext(CartContext) as CartContextType;
+  // const { showCart } = useContext(CartContext) as CartContextType;
 
   const [retrigger, setRetrigger] = useState(false);
   const [userName, setUserName] = useState("");

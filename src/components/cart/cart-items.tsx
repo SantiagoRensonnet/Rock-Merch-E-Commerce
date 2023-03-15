@@ -1,17 +1,16 @@
-//Context
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
-import { CartContextType } from "../../contexts/types.context";
+//Redux
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selector";
 //Components
 import { ItemMiniature } from "./item-miniature";
 
 export const CartItems = () => {
-  const { cartItems } = useContext(CartContext) as CartContextType;
+  const cartItems = useSelector(selectCartItems);
   return (
     <section className="w-full flex flex-col">
       {cartItems.length > 0 ? (
         <>
-          {cartItems.map((item) => (
+          {cartItems.map((item: any) => (
             <ItemMiniature key={item.id} {...item} />
           ))}
         </>

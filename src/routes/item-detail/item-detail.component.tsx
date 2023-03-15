@@ -1,15 +1,15 @@
 //Libraries
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
-import { useResize } from "../hooks/useResize";
+import { useResize } from "../../hooks/useResize";
 //Context
-import { Category } from "../contexts/types.context";
-import { CartContext } from "../contexts/cart.context";
-import { CartContextType } from "../contexts/types.context";
-//redux
-import { useSelector } from "react-redux";
+import { Category } from "./types";
+//Redux
+import { useSelector, useDispatch } from "react-redux";
 //Selectors
-import { selectCategories } from "../store/categories/categories.selector";
+import { selectCategories } from "../../store/categories/categories.selector";
+import { selectCartItems } from "../../store/cart/cart.selector";
+import { addItemToCart } from "../../store/cart/cart.action";
 
 const findItembyId = (categoryArray: Category[], itemId: number) => {
   for (let i = 0; i < categoryArray.length; i++) {
@@ -24,13 +24,15 @@ const findItembyId = (categoryArray: Category[], itemId: number) => {
 export const ItemDetail = () => {
   const { itemId } = useParams();
   const { categories } = useSelector(selectCategories);
-  const { addItemToCart } = useContext(CartContext) as CartContextType;
+  const cart = useSelector(selectCartItems);
+  const dispatch = useDispatch();
+
   const isMobile = useResize();
 
   if (itemId) {
     var item = findItembyId(categories, parseInt(itemId));
   }
-  const addProductToCart = () => item && addItemToCart(item);
+  const addProductToCart = () => item && dispatch(addItemToCart(cart, item));
   //Traer data del context
   return isMobile ? (
     <main className="main-container">

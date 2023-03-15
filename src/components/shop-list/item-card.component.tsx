@@ -1,17 +1,20 @@
 //Libraries
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-//Context
-import { CartContext } from "../../contexts/cart.context";
-import { CartContextType } from "../../contexts/types.context";
 import { ItemCardProps } from "./types";
+//Redux
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart } from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 export const ItemCard = (props: ItemCardProps) => {
   const { name, price, imageUrl, imageYOffset } = props.item;
   const { isMobile, showCardOnMobile } = props;
   const navigate = useNavigate();
-  const { addItemToCart } = useContext(CartContext) as CartContextType;
-  const addProductToCart = () => addItemToCart(props.item);
+
+  const dispatch = useDispatch();
+  const cart = useSelector(selectCartItems);
+  const addProductToCart = () => dispatch(addItemToCart(cart, props.item));
 
   return !isMobile || showCardOnMobile ? (
     <article
